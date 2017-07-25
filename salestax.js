@@ -22,12 +22,28 @@ var companySalesData = [
   }
 ];
 function calculateSalesTax(salesData, taxRates) {
-
-
+  //background
+  //create an empty object to store our results
+  var salesTax = []
+  //execute
+  //look at the first entry in the array salesData
+  //Do I already have an object with its name in salesTax?
+  //If not, create it
+  //add this information to it: total sales in that province and taxes
+  //go to next entry in salesData
+  //if object already exists with its name, just calculate and add
+  for (var i = 0; i < salesData.length; i++){
+    if (!salesTax.includes(salesData[i].name)){
+      salesTax.push(salesData[i].name)
+      console.log("wow!")
+      console.log(salesTax)
+    }
+  }
+  //output
+  //return the object of objects
 }
 
 var results = calculateSalesTax(companySalesData, salesTaxRates);
-
 /* Expected Results:
 {
   Telus: {
