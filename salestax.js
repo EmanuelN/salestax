@@ -31,22 +31,29 @@ function calculateSalesTax(salesData, taxRates) {
   //go to next entry in salesData
   //if object already exists with its name, just calculate and add
   for (var i = 0; i < salesData.length; i++){
-    if (!(salesData[i].name in salesTax)){
-      salesTax[salesData[i].name] = {}
-      console.log(salesTax)
-    }
+
     var provSales = salesData[i].sales.reduce(add, 0)
-    // var provTaxes = (provSales * taxRates.salesData[i].province)
-    console.log(provSales)
-    // console.log(provTaxes)
+    var provTaxes = (provSales * taxRates[salesData[i].province])
+
+    if (!(salesData[i].name in salesTax)){
+      salesTax[salesData[i].name] = {
+        ["totalSales"] : provSales,
+        ["totalTaxes"] : provTaxes
+      }
+    }
+    else {
+      salesTax[salesData[i].name]["totalSales"] += provSales
+      salesTax[salesData[i].name]["totalTaxes"] += provTaxes
+    }
   }
   //output
-  //return the object of objects
+  return salesTax
 }
 function add(a, b){
   return a + b
 }
 var results = calculateSalesTax(companySalesData, salesTaxRates);
+console.log(results)
 /* Expected Results:
 {
   Telus: {
