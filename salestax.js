@@ -27,8 +27,6 @@ function calculateSalesTax(salesData, taxRates) {
   var salesTax = {}
   //execute
   //look at the first entry in the array salesData
-  //Do I already have an object with its name in salesTax?
-  //If not, create it
   //add this information to it: total sales in that province and taxes
   //go to next entry in salesData
   //if object already exists with its name, just calculate and add
@@ -37,12 +35,17 @@ function calculateSalesTax(salesData, taxRates) {
       salesTax[salesData[i].name] = {}
       console.log(salesTax)
     }
-
+    var provSales = salesData[i].sales.reduce(add, 0)
+    // var provTaxes = (provSales * taxRates.salesData[i].province)
+    console.log(provSales)
+    // console.log(provTaxes)
   }
   //output
   //return the object of objects
 }
-
+function add(a, b){
+  return a + b
+}
 var results = calculateSalesTax(companySalesData, salesTaxRates);
 /* Expected Results:
 {
