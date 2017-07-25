@@ -24,7 +24,7 @@ var companySalesData = [
 function calculateSalesTax(salesData, taxRates) {
   //background
   //create an empty object to store our results
-  var salesTax = []
+  var salesTax = {}
   //execute
   //look at the first entry in the array salesData
   //Do I already have an object with its name in salesTax?
@@ -33,11 +33,11 @@ function calculateSalesTax(salesData, taxRates) {
   //go to next entry in salesData
   //if object already exists with its name, just calculate and add
   for (var i = 0; i < salesData.length; i++){
-    if (!salesTax.includes(salesData[i].name)){
-      salesTax.push(salesData[i].name)
-      console.log("wow!")
+    if (!(salesData[i].name in salesTax)){
+      salesTax[salesData[i].name] = {}
       console.log(salesTax)
     }
+
   }
   //output
   //return the object of objects
